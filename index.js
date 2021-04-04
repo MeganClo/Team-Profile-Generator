@@ -5,10 +5,16 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager")
 
+// assigning an array to hold engineer information
 const engineerArr = [];
 
+// assigning an array to hold intern information
 const internArr = [];
 
+// assigning an object to hold manager information
+let manager = {};
+
+// questions related to manager information
 const managerQuestions = [
     {
         type: "input",
@@ -59,6 +65,7 @@ const managerQuestions = [
     
 ];
 
+// question to call to check if information was entered correctly
 const checkQuestion = [
     {
         type: "list",
@@ -68,6 +75,7 @@ const checkQuestion = [
     }
 ];
 
+// question to call to see if the user is finished or would like to add more employees
 const nextStepQuestion = [
     {
        type: "list",
@@ -77,6 +85,7 @@ const nextStepQuestion = [
     }
 ];
 
+// questions related to engineers
 const engineerQuestions = [
     {
         type: "input",
@@ -125,6 +134,7 @@ const engineerQuestions = [
     },
 ];
 
+// questions related to interns
 const internQuestions = [
     {
         type: "input",
@@ -173,6 +183,7 @@ const internQuestions = [
     },
 ];
 
+
 const promptManagerInfo = () => {
     return inquirer.prompt(managerQuestions)
     .then(managerData => {
@@ -180,7 +191,7 @@ const promptManagerInfo = () => {
         answerCheck()
         .then(answerCheckData => {
             if (answerCheckData.check === "Yes, take me to the next step.") {
-                const manager = new Manager
+                manager = new Manager
                 (this.name = managerData.managerName,
                 this.id = managerData.managerID,
                 this.email = managerData.managerEmail,
