@@ -6,13 +6,13 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager")
 
 // assigning an array to hold engineer information
-const engineerArr = [];
+const teamMemberArr = [];
 
 // assigning an array to hold intern information
-const internArr = [];
+// const internArr = [];
 
 // assigning an object to hold manager information
-let manager = {};
+// let manager = {};
 
 // questions related to manager information
 const managerQuestions = [
@@ -191,13 +191,13 @@ const promptManagerInfo = () => {
         answerCheck()
         .then(answerCheckData => {
             if (answerCheckData.check === "Yes, take me to the next step.") {
-                manager = new Manager
+                const manager = new Manager
                 (this.name = managerData.managerName,
                 this.id = managerData.managerID,
                 this.email = managerData.managerEmail,
-                this.officeNumber = managerData.officeNumber
-                );
-                console.log(manager);
+                this.officeNumber = managerData.officeNumber)
+                teamMemberArr.push(manager);
+                console.log(teamMemberArr);
                 employeeAdd();
             } else {
                 promptManagerInfo();
@@ -221,8 +221,8 @@ const engineerAdd = () => {
                 this.id = engineerData.engineerID, 
                 this.email = engineerData.engineerEmail,
                 this.github = engineerData.engineerGithub);
-                engineerArr.push(engineer);
-                console.log(engineerArr);
+                teamMemberArr.push(engineer);
+                console.log(teamMemberArr);
                 employeeAdd();
             } else {
                 engineerAdd();
@@ -246,8 +246,8 @@ const internAdd = () => {
                 this.id = internData.internID, 
                 this.email = internData.internEmail,
                 this.school = internData.internSchool);
-                internArr.push(intern);
-                console.log(internArr);
+                teamMemberArr.push(intern);
+                console.log(teamMemberArr);
                 employeeAdd();
             } else {
                 internAdd();
