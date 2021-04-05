@@ -268,16 +268,8 @@ const employeeAdd = () => {
     return inquirer.prompt(nextStepQuestion)
     .then(nextStepQuestion => {
         if (nextStepQuestion.nextStepCheck === "I've finished building my team, generate my team page!") {
-            (teamMemberArr => {
-                return generateHTML(teamMemberArr)
-            })
-            .then(htmlPage => {
-                console.log("TEAM PAGE CREATED!")
-                return writeTeamPage(htmlPage);
-            })
-            .catch(err => {
-                console.log(err);
-            })
+            writeTeamPage();
+            console.log("Team Page Created!")
         } else if (nextStepQuestion.nextStepCheck === "I'd like to add an engineer to my Team.") {
             engineerAdd();
         } else {
@@ -302,7 +294,7 @@ const writeTeamPage = teamMemberArr => {
     });
 };
 
-promptManagerInfo();
+promptManagerInfo()
 // .then(teamMemberArr => {
 //     return generateHTML(teamMemberArr)
 // })
