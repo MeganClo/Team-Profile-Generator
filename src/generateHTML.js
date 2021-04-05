@@ -58,7 +58,7 @@ const generateCards = teamMemberArr => {
 
 // Create the HTML page: 
 
-const generateHTML = teamMemberArr => {
+const generateHTML = () => {
 
     return `<!DOCTYPE html>
 <html lang="en">
@@ -88,6 +88,8 @@ const generateHTML = teamMemberArr => {
 </html>    
     
     `
-}
+};
+
+module.exports = generateHTML;
 
     

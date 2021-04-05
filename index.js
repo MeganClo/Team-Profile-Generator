@@ -268,7 +268,16 @@ const employeeAdd = () => {
     return inquirer.prompt(nextStepQuestion)
     .then(nextStepQuestion => {
         if (nextStepQuestion.nextStepCheck === "I've finished building my team, generate my team page!") {
-            console.log("Team page will be built")
+            (teamMemberArr => {
+                return generateHTML(teamMemberArr)
+            })
+            .then(htmlPage => {
+                console.log("TEAM PAGE CREATED!")
+                return writeTeamPage(htmlPage);
+            })
+            .catch(err => {
+                console.log(err);
+            })
         } else if (nextStepQuestion.nextStepCheck === "I'd like to add an engineer to my Team.") {
             engineerAdd();
         } else {
@@ -277,8 +286,33 @@ const employeeAdd = () => {
     })
 };
 
+const writeTeamPage = teamMemberArr => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile("./dist/index.html", teamMemberArr, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve({
+                ok: true,
+                message: "File Created!"
+            });
+        });
+    });
+};
 
 promptManagerInfo();
+// .then(teamMemberArr => {
+//     return generateHTML(teamMemberArr)
+// })
+// .then(htmlPage => {
+//     console.log("TEAM PAGE CREATED!")
+//     return writeTeamPage(htmlPage);
+// })
+// .catch(err => {
+//     console.log(err);
+// });
 
 
 
