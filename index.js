@@ -8,12 +8,6 @@ const Manager = require("./lib/Manager")
 // assigning an array to hold engineer information
 const teamMemberArr = [];
 
-// assigning an array to hold intern information
-// const internArr = [];
-
-// assigning an object to hold manager information
-// let manager = {};
-
 // questions related to manager information
 const managerQuestions = [
     {
@@ -278,21 +272,28 @@ const employeeAdd = () => {
     })
 };
 
-const writeTeamPage = teamMemberArr => {
-    return new Promise((resolve, reject) => {
-        fs.writeFile("./dist/index.html", teamMemberArr, err => {
-            if (err) {
-                reject(err);
-                return;
-            }
-
-            resolve({
-                ok: true,
-                message: "File Created!"
-            });
-        });
-    });
+const writeTeamPage = () => {
+    console.log(teamMemberArr);
+    fs.writeFile("./dist/index.html", generateHTML(teamMemberArr), err => {
+        if (err) {
+            console.log(err);
+        }
+    })
 };
+//     return generateHTML (teamMemberArr)
+//     .then(htmlpage => {
+//     fs.writeFile("./dist/index.html", teamMemberArr, err => {
+//             if (err) {
+//                 reject(err);
+//                 return;
+//             }
+
+//             resolve({
+//                 ok: true,
+//                 message: "File Created!"
+//             });
+//         });
+// }}
 
 promptManagerInfo()
 // .then(teamMemberArr => {

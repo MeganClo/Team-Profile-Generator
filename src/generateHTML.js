@@ -1,64 +1,61 @@
+
+
 // create the card section
-const generateCards = teamMemberArr => {
-    teamMemberArr
-        .filter(({ Manager }) => Manager)
-        .map(({ name, id, email, role, officeNumber }) => {
-            return `
-            <div class="col-md-4">
-            <div class="card m-3 border-info" style="box-shadow: 3px 3px 20px;">
-            <div class="card-body"></div>
-            <h5 class="card-title text-center">${name}  <span style="font-size: 38px"><i class="fas fa-chess-queen"></i></span></h5>
+const generateCards = teamMembers => {
+    let members = '';    
+    for (i=0; i < teamMembers.length; i++) {
+        if (teamMembers[i].role === "Manager") { 
+            members +=
+             `<div class="col-md-4">
+             <div class="card m-3 border-info" style="box-shadow: 3px 3px 20px;">
+             <h5 class="card-title text-center">${teamMembers[i].name}  <span style="font-size: 38px"><i class="fas fa-chess-queen"></i></span></h5>
+             <ul class="list-group list-group-flush">
+                 <li class="list-group-item">${teamMembers[i].role}</li>
+                 <li class="list-group-item">ID: ${teamMembers[i].id}</li>
+                 <li class="list-group-item"><a href="mailto:${teamMembers[i].email}">${teamMembers[i].email}</a></li>
+                 <li class="list-group-item">Office Number: ${teamMembers[i].officeNumber}</li>
+                </ul>
+                </div>
+             </div>`
+
+        } else if (teamMembers[i].role === "Engineer") {
+            members +=
+            `<div class="col-md-4">
+            <div class="card m-3 border-info" style="box-shadow: 3px 3px 20px;"><h5 class="card-title text-center">${teamMembers[i].name}  <span style="font-size: 38px"><i class="fas fa-chess-knight"></i></span></h5>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">${role}</li>
-                <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item"><a href="mailto:${email}">${email}</a></li>
-                <li class="list-group-item">Office Number: ${officeNumber}</li>
-            </ul>
-            </div>
-        </div>
-            `
-        })
-    teamMemberArr
-        .filter(({ Engineer }) => Engineer) 
-        .map(({ name, id, email, role, github }) => {
-            return `
-            <div class="col-md-4">
-            <div class="card m-3 border-info" style="box-shadow: 3px 3px 20px;">
-            <div class="card-body"></div>
-            <h5 class="card-title text-center">${name}  <span style="font-size: 38px"><i class="fas fa-chess-bishop"></i></span></h5>
+                <li class="list-group-item">${teamMembers[i].role}</li>
+                <li class="list-group-item">ID: ${teamMembers[i].id}</li>
+                <li class="list-group-item"><a href="mailto:${teamMembers[i].email}">${teamMembers[i].email}</a></li>
+                <li class="list-group-item"><a href="https://github.com/${teamMembers[i].github}" target="_blank">GitHub Profile</a></li>
+                </ul>
+                </div>
+            </div>`
+        } else {
+            members +=
+            `<div class="col-md-4">
+            <div class="card m-3 border-info" style="box-shadow: 3px 3px 20px;"><h5 class="card-title text-center">${teamMembers[i].name}  <span style="font-size: 38px"><i class="fas fa-chess-pawn"></i></span></h5>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">${role}</li>
-                <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item"><a href="mailto:${email}">${email}</a></li>
-                <li class="list-group-item"><a href="https://github.com/${github}" target="_blank">GitHub Profile</a></li>
-            </ul>
-            </div>
-        </div>`
-        })
-        .join("")
-    teamMemberArr
-        .filter(({ Intern }) => Intern) 
-        .map(({ name, id, email, role, school }) => {
-            return `
-            <div class="col-md-4">
-            <div class="card m-3 border-info" style="box-shadow: 3px 3px 20px;">
-            <div class="card-body"></div>
-            <h5 class="card-title text-center">${name}  <span style="font-size: 38px"><i class="fas fa-chess-pawn"></i></span></h5>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">${role}</li>
-                <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item"><a href="mailto:${email}">${email}</a></li>
-                <li class="list-group-item">School: ${school}</li>
-            </ul>
-            </div>
-        </div>` 
-        })
-        .join("")
-};
+                <li class="list-group-item">${teamMembers[i].role}</li>
+                <li class="list-group-item">ID: ${teamMembers[i].id}</li>
+                <li class="list-group-item"><a href="mailto:${teamMembers[i].email}">${teamMembers[i].email}</a></li>
+                <li class="list-group-item">School: ${teamMembers[i].school}</li>
+                </ul>
+                </div>
+            </div>`
+        }
+    }
+    return members;
+        
+
+}
+
+
+
+
 
 // Create the HTML page: 
 
-const generateHTML = () => {
+const generateHTML = (data) => {
 
     return `<!DOCTYPE html>
 <html lang="en">
@@ -76,7 +73,7 @@ const generateHTML = () => {
     <div class="container">
         <div class="row d-flex justify-content-center">
       
-        ${generateCards}
+        ${generateCards(data)}
 
         </div>
     </div>
