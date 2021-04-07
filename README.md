@@ -2,6 +2,8 @@
 
 ## Description
 This application is designed to allow a user to build a simple team profile page that lists each team member and some necessary infomation about them. See a walk-though of this application and how to use it [here](https://drive.google.com/file/d/1w5uy1ak9Rda6Q6L-v73uut04zJ3ForNU/view?usp=sharing) 
+Here's a sample of the generated page:
+[Team Generator.pdf](https://github.com/MeganClo/Team-Profile-Generator/files/6274315/Team.Generator.pdf)
 
 ## Table of Contents
 * [Installation](#Installation)
