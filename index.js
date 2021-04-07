@@ -1,3 +1,4 @@
+// needed 
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateHTML = require("./src/generateHTML");
@@ -177,7 +178,7 @@ const internQuestions = [
     },
 ];
 
-
+// mamager prompt and adding that manager into my employee array
 const promptManagerInfo = () => {
     return inquirer.prompt(managerQuestions)
     .then(managerData => {
@@ -191,7 +192,6 @@ const promptManagerInfo = () => {
                 this.email = managerData.managerEmail,
                 this.officeNumber = managerData.officeNumber)
                 teamMemberArr.push(manager);
-                console.log(teamMemberArr);
                 employeeAdd();
             } else {
                 promptManagerInfo();
@@ -203,6 +203,7 @@ const promptManagerInfo = () => {
     });
 };
 
+// adding an engineer prompt and adding that engineer into my employee array
 const engineerAdd = () => {
     return inquirer.prompt(engineerQuestions)
     .then(engineerData => {
@@ -216,7 +217,6 @@ const engineerAdd = () => {
                 this.email = engineerData.engineerEmail,
                 this.github = engineerData.engineerGithub);
                 teamMemberArr.push(engineer);
-                console.log(teamMemberArr);
                 employeeAdd();
             } else {
                 engineerAdd();
@@ -228,6 +228,7 @@ const engineerAdd = () => {
     })
 };
 
+// adding an intern prompt and adding that intern into my employee array
 const internAdd = () => {
     return inquirer.prompt(internQuestions)
     .then(internData => {
@@ -241,7 +242,6 @@ const internAdd = () => {
                 this.email = internData.internEmail,
                 this.school = internData.internSchool);
                 teamMemberArr.push(intern);
-                console.log(teamMemberArr);
                 employeeAdd();
             } else {
                 internAdd();
@@ -253,11 +253,12 @@ const internAdd = () => {
     })
 };
 
-
+// prompt to check if things were entered correctly
 const answerCheck = () => {
     return inquirer.prompt(checkQuestion)
 };
 
+// inquirer prompt to ask if we want to add an employee or create our page
 const employeeAdd = () => {
     return inquirer.prompt(nextStepQuestion)
     .then(nextStepQuestion => {
@@ -272,40 +273,17 @@ const employeeAdd = () => {
     })
 };
 
+// function to write my html page
 const writeTeamPage = () => {
-    console.log(teamMemberArr);
     fs.writeFile("./dist/index.html", generateHTML(teamMemberArr), err => {
         if (err) {
             console.log(err);
         }
     })
 };
-//     return generateHTML (teamMemberArr)
-//     .then(htmlpage => {
-//     fs.writeFile("./dist/index.html", teamMemberArr, err => {
-//             if (err) {
-//                 reject(err);
-//                 return;
-//             }
 
-//             resolve({
-//                 ok: true,
-//                 message: "File Created!"
-//             });
-//         });
-// }}
-
+// start things off! 
 promptManagerInfo()
-// .then(teamMemberArr => {
-//     return generateHTML(teamMemberArr)
-// })
-// .then(htmlPage => {
-//     console.log("TEAM PAGE CREATED!")
-//     return writeTeamPage(htmlPage);
-// })
-// .catch(err => {
-//     console.log(err);
-// });
 
 
 

@@ -1,6 +1,6 @@
 
 
-// create the card section
+// create the card section with changes dependant on what type of employee they are
 const generateCards = teamMembers => {
     let members = '';    
     for (i=0; i < teamMembers.length; i++) {
