@@ -1,7 +1,7 @@
 # Team Profile Generator 
 
 ## Description
-This application is designed to allow a user to build a simple team profile page that lists each team member and some necessary infomation about them. See a walk-though of this application and how to use it [here](https://drive.google.com/file/d/1ZqXidYjqtGXQ_rpcH2KsFHy1OT5FXhf9/view?usp=sharing) 
+This application is designed to allow a user to build a simple team profile page that lists each team member and some necessary infomation about them. See a walk-though video of this application and how to use it [here](https://drive.google.com/file/d/1ZqXidYjqtGXQ_rpcH2KsFHy1OT5FXhf9/view?usp=sharing) 
 
 Here's a sample of the generated page:
 ![Team Profile](https://user-images.githubusercontent.com/77699944/113936808-2f156600-97ad-11eb-90a7-8fa39314ebc1.jpg)
