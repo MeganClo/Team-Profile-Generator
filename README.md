@@ -1,7 +1,7 @@
 # Team Profile Generator 
 
 ## Description
-This application is designed to allow a user to build a simple team profile page that lists each team member and some necessary infomation about them. 
+This application is designed to allow a user to build a simple team profile page that lists each team member and some necessary infomation about them. See a walk-though of this application and how to use it [here](https://drive.google.com/file/d/1w5uy1ak9Rda6Q6L-v73uut04zJ3ForNU/view?usp=sharing) 
 
 ## Table of Contents
 * [Installation](#Installation)
